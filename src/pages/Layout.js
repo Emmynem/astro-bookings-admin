@@ -62,7 +62,7 @@ export default function Layout() {
                                     <img className='xui-img-30' src={Logo} alt='logo' />
                                     <div className='xui-pl-1'>
                                         <p className='xui-font-w-bold'>Admin</p>
-                                        <span className='xui-font-sz-70 xui-opacity-7'>for E-Commerce</span>
+                                        <span className='xui-font-sz-70 xui-opacity-7'>for Nasa Space Communications</span>
                                     </div>
                                 </div>
                             </Link>
