@@ -15,7 +15,7 @@ export default function SignIn(){
     return(
         <>
             <div className="xui-bg-white xui-bdr-rad-half xui-max-w-500 xui-md-mt-none xui-w-fluid-100 xui-p-1-half xui-pb-3 xui-text-black">
-                <h2 className="xui-font-sz-125 xui-w-fluid-80 xui-my-1">Sign In to <span className="psc-text">Ecommerce Admin</span></h2>
+                <h2 className="xui-font-sz-125 xui-w-fluid-80 xui-my-1">Sign In to <span className="psc-text">AstroBookings Admin</span></h2>
                 <form className="xui-form" layout="2" onSubmit={handleKeySubmit}>
                     <div className="xui-mb-2 xui-d-inline-flex xui-flex-ai-center xui-w-fluid-100">
                         <input className="xui-font-sz-90" type={showKey ? "text" : "password"} onChange={handleKey} required placeholder="Key"></input>
