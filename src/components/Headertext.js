@@ -6,13 +6,15 @@ export default function Headertext() {
     if (loc.pathname === `/internal/dashboard`) {
         return "Dashboard";
     } else if (loc.pathname === `/internal/users`) {
-        return "Users";
+        return "Astronauts";
     } else if (loc.pathname === `/internal/user/add`) {
-        return "Add User";
+        return "Add Astronaut";
     } else if (loc.pathname === `/internal/user/edit/details`) {
-        return "Edit User Details";
+        return "Edit Astronaut Details";
     } else if (loc.pathname === `/internal/bookings`) {
         return "Bookings"
+    } else if (loc.pathname === `/internal/app/defaults`) {
+        return "Defaults";
     } else if (loc.pathname === `/internal/settings`) {
         return "Settings";
     } else {
