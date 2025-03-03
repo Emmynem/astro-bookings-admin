@@ -82,6 +82,14 @@ export default function Layout() {
                                 <span>Dashboard</span>
                             </div>
                         </Link>
+                        <Link to={`/internal/users`} className={"xui-text-inherit link-box xui-font-sz-90 xui-opacity-6 " + (loc.pathname === `/internal/users` || loc.pathname === `/internal/user/add` || loc.pathname === `/internal/user/edit/details` ? 'active' : '')}>
+                            <div className="icon">
+                                <Users width="20" height="20" />
+                            </div>
+                            <div className="name xui-ml-half">
+                                <span>Astronauts</span>
+                            </div>
+                        </Link>
                         <Link to={`/internal/bookings`} className={"xui-text-inherit link-box xui-font-sz-90 xui-opacity-6 " + (loc.pathname === `/internal/bookings` ? 'active' : '')}>
                             <div className="icon">
                                 <Server width="20" height="20" />
@@ -90,12 +98,12 @@ export default function Layout() {
                                 <span>Bookings</span>
                             </div>
                         </Link>
-                        <Link to={`/internal/users`} className={"xui-text-inherit link-box xui-font-sz-90 xui-opacity-6 " + (loc.pathname === `/internal/users` || loc.pathname === `/internal/user/add` || loc.pathname === `/internal/user/edit/details` ? 'active' : '')}>
+                        <Link to={`/internal/app/defaults`} className={"xui-text-inherit link-box xui-font-sz-90 xui-opacity-6 " + (loc.pathname === `/internal/app/defaults` ? 'active' : '')}>
                             <div className="icon">
-                                <Users width="20" height="20" />
+                                <Setting width="20" height="20" />
                             </div>
                             <div className="name xui-ml-half">
-                                <span>Users</span>
+                                <span>Defaults</span>
                             </div>
                         </Link>
                         <div xui-modal-open="logoutModal" className="bottom-fixed xui-mt--5 xui-mb--5 xui-cursor-pointer">
