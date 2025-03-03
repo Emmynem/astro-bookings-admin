@@ -114,13 +114,13 @@ export default function Users() {
 					<section className=''>
 						<div className='xui-d-flex xui-flex-ai-center xui-flex-jc-space-between xui-py-1 psc-section-header'>
 							<div className="xui-mb-1">
-								<h1 className='xui-font-sz-110 xui-font-w-normal'>All Users</h1>
-								<p className="xui-opacity-5 xui-font-sz-90 xui-mt-half">View and edit all users</p>
+								<h1 className='xui-font-sz-110 xui-font-w-normal'>All Astronauts</h1>
+								<p className="xui-opacity-5 xui-font-sz-90 xui-mt-half">View and edit all astronauts</p>
 							</div>
 							<div className="xui-mb-1">
 								<div className='xui-d-inline-flex'>
 									<Link to={`/internal/user/add`} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-80">
-										<span className="xui-mr-half">Add User</span>
+										<span className="xui-mr-half">Add Astronaut</span>
 										<Plus width="15" height="15" />
 									</Link>
 								</div>
@@ -155,10 +155,10 @@ export default function Users() {
 																<span>{data.fullname}</span>
 															</td>
 															<td className='xui-opacity-5'>
-																<span>{data.fee}</span>
+																<span>{data.fee.toLocaleString()}</span>
 															</td>
 															<td className='xui-opacity-5'>
-																<span>{data.priority_fee ? data.priority_fee : "No priority fee"}</span>
+																<span>{data.priority_fee ? data.priority_fee.toLocaleString() : "No priority fee"}</span>
 															</td>
 															<td className=''>
 																{
@@ -251,7 +251,7 @@ export default function Users() {
 			<section className='xui-modal' xui-modal="deleteUserModal" id="deleteUserModal">
 				<div className='xui-modal-content xui-max-h-500 xui-overflow-auto xui-pos-relative'>
 					<center>
-						<h1>Delete User</h1>
+						<h1>Delete Astronaut</h1>
 						<p className="xui-opacity-5 xui-font-sz-90 xui-mt-half">Are you sure you want to continue with this action?</p>
 					</center>
 					<p className="xui-font-sz-100 xui-my-1 xui-mt-1 xui-text-center xui-text-red"><span className="xui-font-w-bold psc-text-red">{errorDeleteUser}</span></p>
