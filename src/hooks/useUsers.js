@@ -31,11 +31,13 @@ const useAddUser = () => {
 	};
 
 	const handleFullname = (e) => { e.preventDefault(); setFullname(e.target.value); };
-	const handleDescription = (contents) => { setDescription(contents); };
+	// const handleDescription = (contents) => { setDescription(contents); };
+	const handleDescription = (e) => { e.preventDefault(); setDescription(e.target.value); };
 	const handleFee = (e) => { e.preventDefault(); setFee(parseFloat(e.target.value)); };
 	const handlePriorityFee = (e) => { e.preventDefault(); setPriorityFee(parseFloat(e.target.value)); };
 
-	const handleAddUser = () => {
+	const handleAddUser = (e) => {
+		e.preventDefault();
 
 		if (!loadingAddUser) {
 			if (!fullname) {
@@ -227,9 +229,11 @@ const useUserDescription = () => {
 	const [errorUserDescription, setErrorUserDescription] = useState(null);
 	const [successUserDescription, setSuccessUserDescription] = useState(null);
 
-	const handleDescription = (contents) => { setDescription(contents); };
+	// const handleDescription = (contents) => { setDescription(contents); };
+	const handleDescription = (e) => { e.preventDefault(); setDescription(e.target.value); };
 
-	const handleUserDescription = () => {
+	const handleUserDescription = (e) => {
+		e.preventDefault();
 
 		if (!loadingUserDescription) {
 			if (!userUniqueId) {
