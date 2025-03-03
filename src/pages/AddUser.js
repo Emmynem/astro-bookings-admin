@@ -12,7 +12,7 @@ import Reset from "../icons/Reset";
 import Check from "../icons/Check";
 import Cancel from "../icons/Cancel";
 import Copy from "../icons/Copy";
-import BundledEditor from '../BundledEditor';
+// import BundledEditor from '../BundledEditor';
 import useCookie from "../hooks/useCookie";
 import { config } from "../config";
 import Loading from "../icons/Loading";
@@ -115,7 +115,8 @@ export default function AddUser() {
 							}
 							<div className="xui-form-box xui-mt-2">
 								<label className="">Description</label>
-								<BundledEditor
+								<textarea type={"text"} maxLength={65535} placeholder={"Write a description"} value={description} onChange={handleDescription}></textarea>
+								{/* <BundledEditor
 									onInit={(evt, editor) => editorDescriptionRef.current = editor}
 									initialValue={description}
 									init={{
@@ -132,9 +133,9 @@ export default function AddUser() {
 										toolbar_mode: 'floating',
 										content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
 									}}
-								/>
+								/> */}
 							</div>
-							{
+							{/* {
 								showConfirmAddUser ?
 									<div className="xui-m-3">
 										<center>
@@ -161,17 +162,18 @@ export default function AddUser() {
 												</button>
 											</div>
 										</div>
-									</div> :
+									</div> : */}
 									<div>
 										<p className="xui-font-sz-100 xui-my-1 xui-text-center xui-text-red"><span className="xui-font-w-bold psc-text-red">{errorAddUser}</span></p>
 										<p className="xui-font-sz-100 xui-my-1 xui-text-center xui-text-green"><span className="xui-font-w-bold psc-text-red">{successAddUser}</span></p>
 										<div className="xui-form-box xui-d-flex xui-flex-jc-flex-end">
-											<button disabled={fullname && fullname.length < 2 || !fee} onClick={() => { setDescriptionContents(); setShowConfirmAddUser(true); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
+											{/* <button disabled={fullname && fullname.length < 2 || !fee} onClick={() => { setDescriptionContents(); setShowConfirmAddUser(true); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85"> */}
+											<button type="submit" className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
 												<span className="xui-mr-half">Save User</span>
 											</button>
 										</div>
 									</div>
-							}
+							{/* } */}
 						</form>
 					</section>
 				</Content>

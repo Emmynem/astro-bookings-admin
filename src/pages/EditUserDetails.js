@@ -12,7 +12,7 @@ import Reset from "../icons/Reset";
 import Check from "../icons/Check";
 import Cancel from "../icons/Cancel";
 import Copy from "../icons/Copy";
-import BundledEditor from '../BundledEditor';
+// import BundledEditor from '../BundledEditor';
 import useCookie from "../hooks/useCookie";
 import { config } from "../config";
 import { getUsers, getUser } from "../api/users";
@@ -204,10 +204,11 @@ export default function EditUserDetails() {
 												</div>
 											</form>
 											<hr></hr>
-											<form className="xui-form xui-mt-2" layout="2" onSubmit={(e) => e.preventDefault()}>
+											<form className="xui-form xui-mt-2" layout="2" onSubmit={handleUserDescription}>
 												<div className="xui-form-box xui-mt-2">
 													<label className="">Description</label>
-													<BundledEditor
+													<textarea type={"text"} maxLength={65535} placeholder={"Write a description"} value={description} onChange={handleDescription}></textarea>
+													{/* <BundledEditor
 														onInit={(evt, editor) => editorDescriptionRef.current = editor}
 														initialValue={description}
 														init={{
@@ -224,10 +225,10 @@ export default function EditUserDetails() {
 															toolbar_mode: 'floating',
 															content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
 														}}
-													/>
+													/> */}
 												</div>
 
-												{
+												{/* {
 													showConfirmUpdateUserDescription ?
 														<div className="xui-m-3">
 															<center>
@@ -254,19 +255,23 @@ export default function EditUserDetails() {
 																	</button>
 																</div>
 															</div>
-														</div> :
+														</div> : */}
 														<div>
 															<p className="xui-font-sz-100 xui-my-1 xui-text-center xui-text-red"><span className="xui-font-w-bold psc-text-red">{errorUserDescription}</span></p>
 															<p className="xui-font-sz-100 xui-my-1 xui-text-center xui-text-green"><span className="xui-font-w-bold psc-text-red">{successUserDescription}</span></p>
 															<div className="xui-form-box xui-d-flex xui-flex-jc-flex-end">
-																<button onClick={() => { setDescriptionContents(); setShowConfirmUpdateUserDescription(true); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
+																{/* <button onClick={() => { setDescriptionContents(); setShowConfirmUpdateUserDescription(true); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85"> */}
+																<button type="submit" className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
 																	<span className="xui-mr-half">Save Changes</span>
-																	<Arrowright width="12" height="12" />
+																	{
+																		loadingUserDescription ?
+																			<Loading width="12" height="12" />
+																			: <Arrowright width="12" height="12" />
+																	}
 																</button>
 															</div>
 														</div>
-
-												}
+												{/* } */}
 											</form>
 										</> :
 										<div className="xui-d-grid xui-lg-grid-col-1 xui-grid-gap-2 xui-mt-2">
