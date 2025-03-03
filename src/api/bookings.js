@@ -4,7 +4,7 @@ import { config } from '../config';
 const getBookings = async function (key, page, size) {
 	try {
 		const response = await axios.get(
-				`${config.baseAPIurl}/root/bookings?page=${page}&size=${size}`,
+			`${config.baseAPIurl}/root/bookings?page=${page}&size=${size}`,
 			{
 				headers: {
 					'astrobookings-access-key': key
