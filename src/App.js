@@ -9,6 +9,7 @@ import SignIn from "./pages/auth/SignIn";
 import Bookings from "./pages/Bookings";
 import AddUser from "./pages/AddUser";
 import EditUserDetails from "./pages/EditUserDetails";
+import AppDefaults from "./pages/AppDefaults";
 
 export default function App(){
   const {cookie} = useCookie(config.key, "");
@@ -21,6 +22,11 @@ export default function App(){
             !cookie || cookie === '' || cookie === '[object Object]' ?
               (<Navigate replace to={"/signin"} />) :
               (<Dashboard />)
+          } />
+          <Route path="app/defaults" element={
+            !cookie || cookie === '' || cookie === '[object Object]' ?
+              (<Navigate replace to={"/signin"} />) :
+              (<AppDefaults />)
           } />
           <Route path="users" element={
             !cookie || cookie === '' || cookie === '[object Object]' ?
