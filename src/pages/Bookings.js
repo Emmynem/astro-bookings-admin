@@ -19,6 +19,7 @@ import Delete from "../icons/Delete";
 import { useUpdateBookingStatus, useDeleteBooking } from "../hooks/useBookings";
 import Edit from "../icons/Edit";
 import EyeOpen from "../icons/EyeOpen";
+import EyeOpenAlt from "../icons/EyeOpenAlt";
 
 export default function Bookings() {
 	const { cookie, forceLogout } = useCookie(config.key, "");
@@ -151,7 +152,7 @@ export default function Bookings() {
 														<th className='xui-min-w-150'>Booking Status</th>
 														<th className='xui-min-w-250'>Created At</th>
 														<th className='xui-min-w-250'>Updated At</th>
-														<th className='xui-min-w-150'>Actions</th>
+														<th className='xui-min-w-200'>Actions</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -230,6 +231,12 @@ export default function Bookings() {
 															</td>
 															<td className=''>
 																<div className="xui-d-flex xui-grid-gap-1">
+																	<button title="View Booking Full Details"
+																		onClick={() => {
+																			getABooking(data.unique_id);
+																		}} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-green xui-bdr-rad-half xui-font-sz-50" xui-modal-open="bookingDetailsModal">
+																		<EyeOpenAlt width="20" height="20" />
+																	</button>
 																	<button title="Edit Booking" onClick={() => { EditUniqueIdStatus(data.unique_id); getABooking(data.unique_id) }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-50" xui-modal-open="editBookingModal">
 																		<Edit width="20" height="20" />
 																	</button>
@@ -359,6 +366,160 @@ export default function Bookings() {
 												<p className="xui-font-sz-80 xui-my-1 xui-text-green"><span className="xui-font-w-bold psc-text-red">{successUpdateBookingStatus}</span></p>
 											</div>
 										</form>
+									</> :
+									<div className="xui-d-grid xui-lg-grid-col-1 xui-grid-gap-2 xui-mt-2">
+										<div className="xui-bdr-w-1 xui-bdr-s-solid xui-bdr-fade xui-py-2 xui-px-1">
+											<center className="xui-text-red">
+												<Close width="100" height="100" />
+												<h3 className="xui-font-sz-120 xui-font-w-normal xui-mt-half">{errorViewBooking}</h3>
+											</center>
+										</div>
+									</div>
+							)
+					}
+				</div>
+			</section>
+			<section className='xui-modal' xui-modal="bookingDetailsModal" id="bookingDetailsModal">
+				<div className='xui-modal-content xui-max-h-500 xui-max-w-800 xui-overflow-auto xui-pos-relative'>
+					<div className="xui-w-40 xui-h-40 xui-bdr-rad-circle xui-d-flex xui-flex-ai-center xui-flex-jc-center psc-bg xui-text-white psc-modal-close" onClick={() => setViewBooking(null)} xui-modal-close="bookingDetailsModal">
+						<Close width="24" height="24" />
+					</div>
+					{
+						loadingViewBooking ?
+							<center>
+								<Loading width="12" height="12" />
+							</center> : (
+								viewBooking && viewBooking.success ?
+									<>
+										<center>
+											<h1>Booking Full Details</h1>
+											<p className="xui-opacity-5 xui-font-sz-90 xui-mt-half">
+												<div className='xui-d-inline-flex xui-flex-ai-center'>
+													<span>#{viewBooking?.data.unique_id}</span>
+													<span title="Copy Unique Id" className="xui-cursor-pointer xui-ml-1" onClick={() => { copyText(viewBooking?.data.unique_id); setTextCopied(viewBooking?.data.unique_id); }}>
+														{copiedText && textCopied === viewBooking?.data.unique_id ? <Check width="16" height="16" /> : <Copy width="16" height="16" />}
+													</span>
+												</div>
+											</p>
+										</center>
+										<div className="xui-d-flex xui-flex-ai-center xui-flex-jc-space-evenly xui-mt-1">
+											<div className="">
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Fullname - </p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Email - </p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Phone Number - </p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Amount - </p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Priority Amount - </p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Total Amount - </p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Details - </p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">Status - </p>
+											</div>
+											<div className="">
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">{viewBooking?.data.fullname}</p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">
+													{
+														viewBooking?.data.email ?
+															<div className='xui-d-inline-flex xui-flex-ai-center'>
+																<span>{viewBooking?.data.email}</span>
+																<span title="Copy Email" className="xui-cursor-pointer xui-ml-1" onClick={() => { copyText(viewBooking?.data.email); setTextCopied(viewBooking?.data.email); }}>
+																	{copiedText && textCopied === viewBooking?.data.email ? <Check width="16" height="16" /> : <Copy width="16" height="16" />}
+																</span>
+															</div> : "No data"
+													}
+												</p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">
+													{
+														viewBooking?.data.phone_number ?
+															<div className='xui-d-inline-flex xui-flex-ai-center'>
+																<span>{viewBooking?.data.phone_number}</span>
+																<span title="Copy Phone Number" className="xui-cursor-pointer xui-ml-1" onClick={() => { copyText(viewBooking?.data.phone_number); setTextCopied(viewBooking?.data.phone_number); }}>
+																	{copiedText && textCopied === viewBooking?.data.phone_number ? <Check width="16" height="16" /> : <Copy width="16" height="16" />}
+																</span>
+															</div> : "No data"
+													}
+												</p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half"><span>${viewBooking?.data.amount}</span></p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half"><span>{viewBooking?.data.priority_amount ? "$" + viewBooking?.data.priority_amount : "No data"}</span></p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half"><span>${viewBooking?.data.total_amount}</span></p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">
+													{/* {
+														viewBooking?.data.details ?
+															<div className='xui-d-inline-flex xui-flex-ai-center'>
+																<span>{truncate(viewBooking?.data.details, 43)}</span>
+																<span title="Copy Details" className="xui-cursor-pointer xui-ml-1" onClick={() => { copyText(viewBooking?.data.details); setTextCopied(viewBooking?.data.details); }}>
+																	{copiedText && textCopied === viewBooking?.data.details ? <Check width="16" height="16" /> : <Copy width="16" height="16" />}
+																</span>
+															</div> : "No data"
+													} */}
+													<span>{viewBooking?.data.details ? viewBooking?.data.details : "No data"}</span>
+												</p>
+												<hr></hr>
+												<p className="xui-opacity-5 xui-font-sz-100 xui-mt-half">
+													{
+														viewBooking?.data.booking_status === "Completed" ?
+															<span className='xui-badge xui-badge-success xui-font-sz-80 xui-bdr-rad-half'>{viewBooking?.data.booking_status}</span> : ""
+													}
+													{
+														viewBooking?.data.booking_status === "Processing" ?
+															<span className='xui-badge xui-badge-warning xui-font-sz-80 xui-bdr-rad-half'>{viewBooking?.data.booking_status}</span> : ""
+													}
+													{
+														viewBooking?.data.booking_status === "Cancelled" ?
+															<span className='xui-badge xui-badge-danger xui-font-sz-80 xui-bdr-rad-half'>{viewBooking?.data.booking_status}</span> : ""
+													}
+												</p>
+											</div>
+										</div>
+										<center>
+											<div className="xui-d-grid xui-lg-grid-col-2 xui-grid-gap-2 xui-mt-2">
+												<div className="xui-font-sz-100 xui-mt-half">
+													<p className="xui-mt-half xui-mb-half">Proof Image</p>
+													{
+														viewBooking?.data.proof_image === null ?
+															<span>No proof image</span> :
+															<div className='xui-d-inline-flex xui-flex-ai-center'>
+																<img className="xui-img-200" src={viewBooking?.data.proof_image} alt="Booking Proof Image" />
+																<span title="Copy Image Link" className="xui-cursor-pointer xui-ml-1" onClick={() => { copyText(viewBooking?.data.proof_image); setTextCopied(viewBooking?.data.proof_image); }}>
+																	{copiedText && textCopied === viewBooking?.data.proof_image ? <Check width="16" height="16" /> : <Copy width="16" height="16" />}
+																</span>
+																<span title="View File" className="xui-cursor-pointer xui-mx-1" onClick={() => { showPreview(viewBooking?.data.proof_image); }}>
+																	<EyeOpen width="16" height="16" />
+																</span>
+															</div>
+													}
+												</div>
+												<div className="xui-font-sz-100 xui-mt-half">
+													<p className="xui-mt-half xui-mb-half">Topup Proof Image</p>
+													{
+														viewBooking?.data.topup_proof_image === null ?
+															<span>No topup proof image</span> :
+															<div className='xui-d-inline-flex xui-flex-ai-center'>
+																<img className="xui-img-200" src={viewBooking?.data.topup_proof_image} alt="Booking Proof Image" />
+																<span title="Copy Image Link" className="xui-cursor-pointer xui-ml-1" onClick={() => { copyText(viewBooking?.data.topup_proof_image); setTextCopied(viewBooking?.data.topup_proof_image); }}>
+																	{copiedText && textCopied === viewBooking?.data.topup_proof_image ? <Check width="16" height="16" /> : <Copy width="16" height="16" />}
+																</span>
+																<span title="View File" className="xui-cursor-pointer xui-mx-1" onClick={() => { showPreview(viewBooking?.data.topup_proof_image); }}>
+																	<EyeOpen width="16" height="16" />
+																</span>
+															</div>
+													}
+												</div>
+											</div>
+											
+											<p className="xui-opacity-4 xui-font-sz-90 xui-m-half">Created - {new Date(viewBooking?.data.createdAt).toLocaleString()} | Last Updated - {new Date(viewBooking?.data.updatedAt).toLocaleString()}</p>
+										</center>
 									</> :
 									<div className="xui-d-grid xui-lg-grid-col-1 xui-grid-gap-2 xui-mt-2">
 										<div className="xui-bdr-w-1 xui-bdr-s-solid xui-bdr-fade xui-py-2 xui-px-1">
