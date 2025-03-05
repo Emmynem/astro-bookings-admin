@@ -134,8 +134,8 @@ const useAddUser = () => {
 					const uploadFileRes = uploadFile(formdata)
 	
 					uploadFileRes.then(res => {
-						setLoadingAddUser(false);
 						if (res.err) {
+							setLoadingAddUser(false);
 							if (!res.error.response.data.success) {
 								const error = `${res.error.response.status !== 422 ? res.error.response.data.message : res.error.response.data.data[0].msg}`;
 								setErrorAddUser(error);

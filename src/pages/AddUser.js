@@ -168,8 +168,13 @@ export default function AddUser() {
 										<p className="xui-font-sz-100 xui-my-1 xui-text-center xui-text-green"><span className="xui-font-w-bold psc-text-red">{successAddUser}</span></p>
 										<div className="xui-form-box xui-d-flex xui-flex-jc-flex-end">
 											{/* <button disabled={fullname && fullname.length < 2 || !fee} onClick={() => { setDescriptionContents(); setShowConfirmAddUser(true); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85"> */}
-											<button type="submit" className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
+											<button type="submit" disabled={loadingAddUser} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
 												<span className="xui-mr-half">Save User</span>
+												{
+													loadingAddUser ?
+														<Loading width="12" height="12" />
+														: <Check width="12" height="12" />
+												}
 											</button>
 										</div>
 									</div>

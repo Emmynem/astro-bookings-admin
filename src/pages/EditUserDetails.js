@@ -261,7 +261,7 @@ export default function EditUserDetails() {
 															<p className="xui-font-sz-100 xui-my-1 xui-text-center xui-text-green"><span className="xui-font-w-bold psc-text-red">{successUserDescription}</span></p>
 															<div className="xui-form-box xui-d-flex xui-flex-jc-flex-end">
 																{/* <button onClick={() => { setDescriptionContents(); setShowConfirmUpdateUserDescription(true); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85"> */}
-																<button type="submit" className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
+																<button type="submit" disabled={loadingUserDescription} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-85">
 																	<span className="xui-mr-half">Save Changes</span>
 																	{
 																		loadingUserDescription ?
