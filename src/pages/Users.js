@@ -183,7 +183,7 @@ export default function Users() {
 															</td>
 															<td className=''>
 																<div className="xui-d-flex xui-grid-gap-1">
-																	<Link to={`/internal/user/edit/details?unique_id=${data.unique_id}`} className="xui-text-dc-none xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-50">
+																	<Link to={`/internal/user/edit/details?unique_id=${data.unique_id}`} className="xui-text-dc-none xui-d-inline-flex xui-flex-ai-center xui-btn xui-btn-blue xui-bdr-rad-half xui-font-sz-50">
 																		<Edit width="20" height="20" />
 																	</Link>
 																	<button title="Delete User" onClick={() => { DeleteUniqueId(data.unique_id); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-red xui-bdr-rad-half xui-font-sz-50" xui-modal-open="deleteUserModal">

@@ -237,7 +237,7 @@ export default function Bookings() {
 																		}} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-green xui-bdr-rad-half xui-font-sz-50" xui-modal-open="bookingDetailsModal">
 																		<EyeOpenAlt width="20" height="20" />
 																	</button>
-																	<button title="Edit Booking" onClick={() => { EditUniqueIdStatus(data.unique_id); getABooking(data.unique_id) }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-blue xui-bdr-rad-half xui-font-sz-50" xui-modal-open="editBookingModal">
+																	<button title="Edit Booking" onClick={() => { EditUniqueIdStatus(data.unique_id); getABooking(data.unique_id) }} className="xui-d-inline-flex xui-flex-ai-center xui-btn xui-btn-blue xui-bdr-rad-half xui-font-sz-50" xui-modal-open="editBookingModal">
 																		<Edit width="20" height="20" />
 																	</button>
 																	<button title="Delete Booking" onClick={() => { DeleteUniqueId(data.unique_id); }} className="xui-d-inline-flex xui-flex-ai-center xui-btn psc-btn-red xui-bdr-rad-half xui-font-sz-50" xui-modal-open="deleteBookingModal">
